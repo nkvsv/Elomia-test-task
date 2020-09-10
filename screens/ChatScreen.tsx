@@ -1,32 +1,46 @@
 import { StackScreenProps } from '@react-navigation/stack';
 import React, { useState, useCallback, useEffect } from 'react'
-import { GiftedChat } from 'react-native-gifted-chat'
+import { GiftedChat, IMessage } from 'react-native-gifted-chat'
 import { StyleSheet } from 'react-native';
-
+import {AxiosResponse} from 'axios';
 import { RootStackParamList } from '../types';
+import { getMessage, ApiCallData } from '../api/api'
+
+export interface FutureMessageParams {
+  ip: string,
+  data: string
+}
+
+export interface s {}
 
 export default function ChatScreen({
   navigation,
 }: StackScreenProps<RootStackParamList>) {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState<Array<IMessage>>([]);
+  const currentSentMessageParams = useState({})
 
   useEffect(() => {
     setMessages([
       {
         _id: 1,
-        text: 'Hello developer',
+        text: 'Hello! Please send your message :)',
         createdAt: new Date(),
         user: {
           _id: 2,
-          name: 'React Native',
-          avatar: 'https://placeimg.com/140/140/any',
+          name: 'Elomia',
+          avatar: 'https://elomia.com/assets/avatar_450.jpg',
         },
       },
     ])
   }, [])
 
   const onSend = useCallback((messages = []) => {
-    setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
+    getMessage().then((response) => {
+      const newMessageText = `IP: ${response?.data.ip}, time: ${response?.requestResponseTimeout}, text: ${messages[0].text}`
+      messages[0].text = newMessageText
+
+      setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
+    })    
   }, [])
 
   return (
