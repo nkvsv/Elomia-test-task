@@ -11,5 +11,4 @@ Setup / Business logic - DONE, Pixel perfect markup: WIP
 
 ###
 Current view (todo: lato font, styled input)
-![image](https://ibb.co/wCFVRRg)
-![image2](https://ibb.co/cxCLBzZ)
+![image](https://i.ibb.co/b72J0pC/image.png)
