@@ -4,7 +4,12 @@ yarn,
 yarn start
 
 ###
-Задание в процессе, на данный момент потрачено 10 часов
+WIP, currently spent: 10 hours
 
 ###
 Setup / Business logic - DONE, Pixel perfect markup: WIP
+
+###
+Current view (todo: lato font, styled input)
+![image](https://ibb.co/wCFVRRg)
+![image2](https://ibb.co/cxCLBzZ)
