@@ -13,6 +13,7 @@ import {
 import { StyleSheet, Image } from 'react-native';
 import { RootStackParamList } from '../types';
 import { getMessage } from '../api/api';
+import Colors from '../constants/Colors';
 
 export default function ChatScreen({
   navigation,
@@ -55,11 +56,11 @@ export default function ChatScreen({
       messages={messages}
       alwaysShowSend={true}
       messagesContainerStyle={styles.chatContainerStyle}
-      renderSend={(props) => <Send {...props} containerStyle={style.sendContainer} children={<Image source={PAPERPLANE_ICON} />} />}
+      renderSend={(props) => <Send {...props} containerStyle={styles.sendContainer} children={<Image source={PAPERPLANE_ICON} />} />}
       placeholder='Write a message'
       renderDay={(props) => <Day {...props} textStyle={styles.dayTextStyle} dateFormat="D MMMM" />}
       renderComposer={(props) => <Composer {...props} placeholderTextColor="#9AADDE" textInputStyle={styles.composerTextInput} />}
-      renderInputToolbar={(props) => <InputToolbar {...props} containerStyle={{ backgroundColor: '#EFF3FF' }} primaryStyle={styles.inputToolbarPrimary} />}
+      renderInputToolbar={(props) => <InputToolbar {...props} containerStyle={styles.inputToolbarContainer} primaryStyle={styles.inputToolbarPrimary} />}
       renderBubble={(props) => <Bubble {...props} wrapperStyle={{
         left: styles.leftMessageContainerStyle,
         right: styles.rightMessageContainerStyle
@@ -97,15 +98,15 @@ const MESSAGE_CONTAINER_PRESET = {
 
 const styles = StyleSheet.create({
   chatContainerStyle: {
-    backgroundColor: '#EFF3FF',
+    backgroundColor: Colors.light_purple,
     paddingBottom: 25,
   },
   header: {
     height: 110,
-    backgroundColor: '#A4B3EA',
+    backgroundColor: Colors.dark_purple,
   },
   headerTitle: {
-    color: '#FFFFFF',
+    color: Colors.white,
     left: -100,
     fontSize: 22,
     fontFamily: FONT_BOLD
@@ -115,8 +116,11 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
   },
   inputToolbarPrimary: {
-    backgroundColor: '#EFF3FF',
+    backgroundColor: Colors.light_purple,
     bottom: 13,
+  },
+  inputToolbarContainer: {
+    backgroundColor: Colors.light_purple
   },
   logo: {
     width: 46,
@@ -124,7 +128,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
   },
   dayTextStyle: {
-    color: '#07144A',
+    color: Colors.dark_blue,
     textAlign: 'center',
     fontSize: 16,
     paddingBottom: 22,
@@ -140,15 +144,15 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     marginLeft: 18,
     marginRight: 18,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: Colors.white,
     maxHeight: 51,
     minHeight: 45,
     paddingLeft: 22,
     paddingTop: 15,
     paddingBottom: 11,
-    color: '#07144A',
+    color: Colors.dark_blue,
     fontSize: 16,
-    shadowColor: '#000',
+    shadowColor: Colors.black,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.02,
     shadowRadius: 10,
@@ -160,24 +164,24 @@ const styles = StyleSheet.create({
     bottom: 9
   },
   leftMessageContainerStyle: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: Colors.white,
     ...MESSAGE_CONTAINER_PRESET,
     marginLeft: 2,
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 3,
   },
   rightMessageContainerStyle: {
-    backgroundColor: '#5C74DD',
+    backgroundColor: Colors.sky_blue,
     ...MESSAGE_CONTAINER_PRESET,
   },
   leftMessageTextStyle: {
     fontSize: 16,
-    color: '#07144A',
+    color: Colors.dark_blue,
     fontFamily: FONT
   },
   rightMessageTextStyle: {
     fontSize: 16,
-    color: '#FFFFFF',
+    color: Colors.white,
     fontFamily: FONT
   },
 });
