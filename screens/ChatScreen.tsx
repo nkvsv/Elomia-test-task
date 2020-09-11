@@ -55,11 +55,7 @@ export default function ChatScreen({
       messages={messages}
       alwaysShowSend={true}
       messagesContainerStyle={styles.chatContainerStyle}
-      renderSend={(props) => <Send {...props} containerStyle={{
-        position: 'absolute',
-        right: 30,
-        bottom: 9
-      }} children={<Image source={PAPERPLANE_ICON} />} />}
+      renderSend={(props) => <Send {...props} containerStyle={style.sendContainer} children={<Image source={PAPERPLANE_ICON} />} />}
       placeholder='Write a message'
       renderDay={(props) => <Day {...props} textStyle={styles.dayTextStyle} dateFormat="D MMMM" />}
       renderComposer={(props) => <Composer {...props} placeholderTextColor="#9AADDE" textInputStyle={styles.composerTextInput} />}
@@ -96,7 +92,7 @@ const MESSAGE_CONTAINER_PRESET = {
   padding: 13,
   shadowOffset: { width: 0, height: 2 },
   shadowOpacity: 0.02,
-  shadowRadius: 10, 
+  shadowRadius: 10,
 };
 
 const styles = StyleSheet.create({
@@ -157,6 +153,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.02,
     shadowRadius: 10,
     fontFamily: FONT
+  },
+  sendContainer: {
+    position: 'absolute',
+    right: 30,
+    bottom: 9
   },
   leftMessageContainerStyle: {
     backgroundColor: '#FFFFFF',
