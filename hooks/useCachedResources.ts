@@ -1,7 +1,11 @@
-import { Ionicons } from '@expo/vector-icons';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import * as React from 'react';
+import { 
+  Lato_400Regular,
+  Lato_700Bold,
+  useFonts
+} from '@expo-google-fonts/lato'
 
 export default function useCachedResources() {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
@@ -14,8 +18,8 @@ export default function useCachedResources() {
 
         // Load fonts
         await Font.loadAsync({
-          'lato': require('../assets/fonts/Lato-Regular.ttf'),
-          'lato-bold': require('../assets/fonts/Lato-Bold.ttf')
+          'Lato_400Regular': Lato_400Regular,
+          'Lato_700Bold': Lato_700Bold
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service
